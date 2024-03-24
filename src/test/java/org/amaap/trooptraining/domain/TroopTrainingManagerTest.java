@@ -1,7 +1,8 @@
 package org.amaap.trooptraining.domain;
 
 import org.amaap.trooptraining.domain.model.Troop;
-import org.amaap.trooptraining.domain.model.TroopType;
+import org.amaap.trooptraining.domain.model.Troopers;
+import org.amaap.trooptraining.domain.model.exception.InvalidTroopQuantityException;
 import org.amaap.trooptraining.domain.model.exception.InvalidTroopTypeException;
 import org.junit.jupiter.api.Test;
 
@@ -9,20 +10,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TroopTrainingManagerTest {
     @Test
-    void shouldAbleToCreateTroopWithTypeBarbarian() throws InvalidTroopTypeException {
+    void shouldAbleToCreateTroopWithTypeBarbarian() throws InvalidTroopTypeException, InvalidTroopQuantityException {
         //Arrange
-        TroopType troopType = TroopType.Barbarian;
-        int trainingTime = 3;
-        int trainingCost = 10;
-        Troop expected = Troop.create(troopType,trainingTime,trainingCost);
+        Troopers troopType = Troopers.Barbarian;
+        int quantity = 5;
+        Troop expected = Troop.create(troopType,quantity);
 
         //Act
         TroopTrainingManager troopTrainingManager = new TroopTrainingManager();
-        Troop actual =troopTrainingManager.createTroop(troopType,trainingTime,trainingCost);
+        Troop actual =troopTrainingManager.createTroop(troopType,quantity);
 
         //Assert
         assertEquals(expected,actual);
 
+    }
+    @Test
+    void shouldAbleToCreateTroopWithTypeArcher() throws InvalidTroopTypeException, InvalidTroopQuantityException {
+        //Arrange
+        Troopers troopType = Troopers.Archer;
+        int quantity = 5;
+        Troop expected = Troop.create(troopType,quantity);
+
+        //Act
+        TroopTrainingManager troopTrainingManager = new TroopTrainingManager();
+        Troop actual =troopTrainingManager.createTroop(troopType,quantity);
+
+        //Assert
+        assertEquals(expected,actual);
 
     }
 }

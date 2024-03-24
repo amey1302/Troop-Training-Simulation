@@ -1,10 +1,10 @@
 package org.amaap.trooptraining.domain;
 
 import org.amaap.trooptraining.domain.model.Troop;
-import org.amaap.trooptraining.domain.model.TroopType;
+import org.amaap.trooptraining.domain.model.Troopers;
 
 public class TroopTrainingManager {
-    public Troop createTroop(TroopType troopType, int trainingTime, int trainingCost) {
-        return new Troop(troopType,trainingTime,trainingCost);
+    public Troop createTroop(Troopers troopType, int trainingTime) {
+        return new Troop(troopType,trainingTime);
     }
 }
