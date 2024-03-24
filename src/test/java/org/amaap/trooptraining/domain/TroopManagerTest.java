@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TroopTrainingManagerTest {
+public class TroopManagerTest {
     @Test
     void shouldAbleToCreateTroopWithTypeBarbarian() throws InvalidTroopTypeException, InvalidTroopQuantityException {
         //Arrange
@@ -17,7 +17,7 @@ public class TroopTrainingManagerTest {
         Troop expected = Troop.create(troopType,quantity);
 
         //Act
-        TroopTrainingManager troopTrainingManager = new TroopTrainingManager();
+        TroopManager troopTrainingManager = new TroopManager();
         Troop actual =troopTrainingManager.createTroop(troopType,quantity);
 
         //Assert
@@ -32,7 +32,7 @@ public class TroopTrainingManagerTest {
         Troop expected = Troop.create(troopType,quantity);
 
         //Act
-        TroopTrainingManager troopTrainingManager = new TroopTrainingManager();
+        TroopManager troopTrainingManager = new TroopManager();
         Troop actual =troopTrainingManager.createTroop(troopType,quantity);
 
         //Assert
