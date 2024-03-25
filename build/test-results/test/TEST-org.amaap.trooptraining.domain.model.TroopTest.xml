@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.amaap.trooptraining.domain.model.TroopTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-03-24T15:32:30" hostname="LAPTOP-205J7BQ6" time="0.018">
-  <properties/>
-  <testcase name="shouldAbleToThrowAnExceptionWhenTroopQuantityIsGreaterThan10()" classname="org.amaap.trooptraining.domain.model.TroopTest" time="0.015"/>
-  <testcase name="shouldAbleToThrowAnExceptionWhenTroopQuantityIsNegative()" classname="org.amaap.trooptraining.domain.model.TroopTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

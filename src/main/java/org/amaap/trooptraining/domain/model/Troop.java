@@ -7,28 +7,25 @@ import java.util.EnumSet;
 import java.util.Objects;
 
 public class Troop {
-    Troopers troopType;
+    Trooper troopType;
     int quantity;
 
-    public Troop(Troopers troopType, int quantity) {
+    public Troop(Trooper troopType) {
         this.troopType = troopType;
-        this.quantity = quantity;
     }
 
-    public static Troop create(Troopers troopType, int quantity) throws InvalidTroopTypeException, InvalidTroopQuantityException {
+    public static Troop create(Trooper troopType) throws InvalidTroopTypeException, InvalidTroopQuantityException {
         if (isInvalidTroopType(troopType))
             throw new InvalidTroopTypeException("Troop Should Be Only\n1. Barbarian \n2. Archer");
-        if (isInvalidTroopQuantity(quantity))
-            throw new InvalidTroopQuantityException("Troop Quantity Should be At Most 10 and at least 0");
-        return new Troop(troopType, quantity);
+        return new Troop(troopType);
     }
 
-    public static boolean isInvalidTroopType(Troopers troopType) {
+    public static boolean isInvalidTroopType(Trooper troopType) {
         return !isValidTroopType(troopType);
     }
 
-    public static boolean isValidTroopType(Troopers troopType) {
-        EnumSet<Troopers> troopTypes = EnumSet.allOf(Troopers.class);
+    public static boolean isValidTroopType(Trooper troopType) {
+        EnumSet<Trooper> troopTypes = EnumSet.allOf(Trooper.class);
         if (troopTypes.contains(troopType))
             return true;
         return false;
@@ -39,11 +36,11 @@ public class Troop {
     }
 
     private static boolean isValidTroopQuantity(int quantity) {
+        return quantity >= 10;
+    }
 
-        if(quantity >=0 && quantity <= 10)
-            return true;
-        return false;
-
+    public int getQuantity() {
+        return quantity;
     }
 
     @Override
@@ -57,5 +54,9 @@ public class Troop {
     @Override
     public int hashCode() {
         return Objects.hash(troopType, quantity);
+    }
+
+    public Trooper getTroopType() {
+        return troopType;
     }
 }
