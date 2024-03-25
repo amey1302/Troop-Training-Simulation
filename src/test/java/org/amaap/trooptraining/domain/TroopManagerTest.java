@@ -7,11 +7,20 @@ import org.amaap.trooptraining.domain.model.exception.InvalidTroopException;
 import org.amaap.trooptraining.domain.model.exception.InvalidTroopQuantityException;
 import org.amaap.trooptraining.domain.model.exception.InvalidTroopTypeException;
 import org.amaap.trooptraining.domain.model.exception.QuantityExceededCapacityException;
+import org.amaap.trooptraining.domain.util.ArmyCampUtil;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TroopManagerTest {
+    @BeforeEach
+    void setUp() {
+        // Clear trained troop list before each test
+        ArmyCampUtil.clearTrainedTroops();
+    }
     @Test
     void shouldAbleToCreateTroopWithTypeBarbarian() throws InvalidTroopException {
         //Arrange
@@ -21,7 +30,6 @@ public class TroopManagerTest {
         //Act
         TroopManager troopTrainingManager = new TroopManager();
         Troop actual = troopTrainingManager.createTroop(troopType);
-        System.out.println(expected + "   "+actual);
         //Assert
         assertEquals(expected, actual);
 
@@ -57,5 +65,22 @@ public class TroopManagerTest {
         //Assert
         assertEquals(expected, actual);
 
+    }@Test
+    void shouldAbleToViewTheTroopFromArmyCamp() throws InvalidTroopTypeException, InvalidTroopQuantityException, InterruptedException, QuantityExceededCapacityException {
+        //Arrange
+        Troop troop = Troop.create(Trooper.Archer);
+        int quantityBeingTrained = 5;
+
+
+        //Act
+        TroopManager troopTrainingManager = new TroopManager();
+        troopTrainingManager.TrainTroop(troop,quantityBeingTrained);
+        List<Troop> trainedTroops = troopTrainingManager.viewTroopCamp();
+
+
+        //Assert
+        assertEquals(quantityBeingTrained, trainedTroops.size());
+
     }
+
 }

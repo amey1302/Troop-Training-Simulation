@@ -1,6 +1,5 @@
 package org.amaap.trooptraining.domain.model;
 
-import org.amaap.trooptraining.domain.model.exception.InvalidTroopQuantityException;
 import org.amaap.trooptraining.domain.model.exception.QuantityExceededCapacityException;
 
 import java.util.ArrayList;
@@ -17,17 +16,21 @@ public class Barracks {
 
     public static boolean trainTroop(Troop troop, int quantityBeingTrained) throws InterruptedException, QuantityExceededCapacityException {
         if (quantityBeingTrained <= Barracks.getCapacity()) {
-
             System.out.println("Training Started...");
-            Thread.sleep(troop.getTroopType().getTrainingTime() * 1000* quantityBeingTrained);
+            // Thread.sleep(troop.getTroopType().getTrainingTime() * 1000 * quantityBeingTrained);
             System.out.println("Training Complete for " + quantityBeingTrained + " " + troop.getTroopType());
-            troopBeingTrained.add(troop);
+            List<Troop> trainedTroops = new ArrayList<>();
+            for (int i = 0; i < quantityBeingTrained; i++) {
+                trainedTroops.add(new Troop(troop.getTroopType()));
+            }
+            ArmyCamp.addTrainedTroops(trainedTroops);
             return true;
-        } else
-            throw new QuantityExceededCapacityException("Barracks Capacity is Full,Can't Train More Troops Right Now");
-    }
-    public static List<Troop> getTroopBeingTrained() {
-        return troopBeingTrained;
+        } else {
+            throw new QuantityExceededCapacityException("Barracks Capacity is Full, Can't Train More Troops Right Now");
+        }
     }
 
+    public static List<Troop> getTroopBeingTrained() {
+        return new ArrayList<>(troopBeingTrained);
+    }
 }

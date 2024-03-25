@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.amaap.trooptraining.domain.TroopManagerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-03-25T03:14:12" hostname="LAPTOP-205J7BQ6" time="0.04">
+  <properties/>
+  <testcase name="shouldAbleToCreateTroopWithTypeBarbarian()" classname="org.amaap.trooptraining.domain.TroopManagerTest" time="0.028"/>
+  <testcase name="shouldAbleToTrainTrooperWithTypeArcher()" classname="org.amaap.trooptraining.domain.TroopManagerTest" time="0.006"/>
+  <testcase name="shouldAbleToViewTheTroopFromArmyCamp()" classname="org.amaap.trooptraining.domain.TroopManagerTest" time="0.001"/>
+  <testcase name="shouldAbleToCreateTroopWithTypeArcher()" classname="org.amaap.trooptraining.domain.TroopManagerTest" time="0.002"/>
+  <system-out><![CDATA[org.amaap.trooptraining.domain.model.Troop@d4970de4   org.amaap.trooptraining.domain.model.Troop@d4970de4
+Training Started...
+Training Complete for 5 Trooper{trainingTime=6, trainingCost=20}
+Training Started...
+Training Complete for 5 Trooper{trainingTime=6, trainingCost=20}
+Training Started...
+Training Complete for 5 Trooper{trainingTime=6, trainingCost=20}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
