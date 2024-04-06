@@ -1,6 +1,5 @@
 package org.amaap.troopsimulator.domain.model;
 
-public enum Trooper {
+public enum TroopType {
     Barbarian
-
 }

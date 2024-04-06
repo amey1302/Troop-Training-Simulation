@@ -13,13 +13,12 @@ class TrainControllerTest {
         TrainController trainController = new TrainController();
         int trooperCount = 10;
         String trooperType = "Barbarian";
-        String expected = "Training Completed..";
 
         // act
-        String actual = trainController.train(trooperCount, trooperType);
+        boolean  actual = trainController.train(trooperCount, trooperType);
 
         // assert
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
 }
