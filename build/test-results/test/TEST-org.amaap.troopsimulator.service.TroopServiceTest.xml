@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.amaap.troopsimulator.service.TroopServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-04-06T08:03:11" hostname="RAHULSLAPPY" time="0.063">
+<testsuite name="org.amaap.troopsimulator.service.TroopServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-04-06T13:57:50" hostname="RAHULSLAPPY" time="0.026">
   <properties/>
-  <testcase name="shouldThrowAnInvalidTroopCountException()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.046"/>
+  <testcase name="shouldThrowAnInvalidTroopCountException()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.018"/>
   <testcase name="shouldBeAbleToTrainTroopWithValidInputs()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.002"/>
-  <testcase name="shouldThrowAnInvalidTroopTypeException()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.008"/>
+  <testcase name="shouldThrowAnInvalidTroopTypeException()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
