@@ -12,40 +12,69 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BarrackTest {
     @Test
-    void shouldBeAbleToGetTheTotalWaitingListWhenBarbarianIsSentToBarrack() {
+    void shouldBeAbleToTrainBarbarianInGivenTimeWhenSentToBarrack() {
         // arrange
         TrainTroop trainTroop = new TrainTroop();
         int troopCount = 20;
         String troopType = "Barbarian";
         trainTroop.train(troopCount, troopType);
-        Queue<Barbarian> expected = TrainTroop.getBarbarianWaitListQueue();
+        Queue<Barbarian> expected = new LinkedList<>(TrainTroop.getBarbarianWaitListQueue());
 
         // act
         Barrack barrack = new Barrack();
-        barrack.setBarbarianQueue(new LinkedList<>(TrainTroop.getBarbarianWaitListQueue()));
-        Queue<Barbarian> actual = barrack.getWaitQueOfBarbarian();
+        barrack.trainTroops();
+        Queue<Barbarian> actual = barrack.getTrainedBarbarians();
 
         // assert
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, "Trained ");
     }
 
 
     @Test
-    void shouldBeAbleToGetTheTotalWaitingListWhenArcherIsSentToBarrack() {
+    void shouldBeAbleToTrainArcherInGivenTimeWhenIsSentToBarrack() {
         // arrange
         TrainTroop trainTroop = new TrainTroop();
         int troopCount = 30;
         String troopType = "Archer";
         trainTroop.train(troopCount, troopType);
-        Queue<Archer> expected = TrainTroop.getArcherWaitListQueue();
+        Queue<Archer> expected = new LinkedList<>(TrainTroop.getArcherWaitListQueue());
 
         // act
         Barrack barrack = new Barrack();
-        barrack.setArcherQueue(new LinkedList<>(TrainTroop.getArcherWaitListQueue()));
-        Queue<Archer> actual = barrack.getWaitQueOfArcher();
+        barrack.trainTroops();
+        Queue<Archer> actual = barrack.getTrainedArchers();
 
         // assert
         assertEquals(expected, actual);
+
     }
 
+    @Test
+    void shouldBeAbleToTrainBothArcherAndBarbarianInGivenTimeWhenSentToBarrack()
+    {
+        // arrange
+        TrainTroop trainTroop = new TrainTroop();
+        int troopCountForBarbarian = 5;
+        String troopTypeForBarbarian = "Barbarian";
+        trainTroop.train(troopCountForBarbarian, troopTypeForBarbarian);
+
+        int troopCountForArcher = 4;
+        String troopTypeForArcher = "Archer";
+        trainTroop.train(troopCountForArcher, troopTypeForArcher);
+        Barrack barrack = new Barrack();
+
+        // act
+        barrack.trainTroops();
+
+        // assert
+        LinkedList<Barbarian> trainedBarbarians = barrack.getTrainedBarbarians();
+        LinkedList<Archer> trainedArchers = barrack.getTrainedArchers();
+
+        LinkedList<Object> trainedTroopers = new LinkedList<>();
+        trainedTroopers.addAll(trainedBarbarians);
+        trainedTroopers.addAll(trainedArchers);
+
+        assertEquals(9, trainedTroopers.size());
+
+    }
 }
