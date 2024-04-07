@@ -1,5 +1,6 @@
 package org.amaap.troopsimulator.domain.service;
 
+import org.amaap.troopsimulator.domain.service.util.Util;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,8 +10,7 @@ class TrainTroopTest {
 
     @BeforeEach
     void setUp() {
-
-        TrainTroop.clearWaitListQueues();
+        Util.clearWaitListQueues();
     }
 
     @Test

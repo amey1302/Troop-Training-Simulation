@@ -1,6 +1,5 @@
 package org.amaap.troopsimulator.service;
 
-import org.amaap.troopsimulator.domain.service.TrainTroop;
 import org.amaap.troopsimulator.service.exception.InvalidTroopCountException;
 import org.amaap.troopsimulator.service.exception.InvalidTroopTypeException;
 import org.junit.jupiter.api.Test;

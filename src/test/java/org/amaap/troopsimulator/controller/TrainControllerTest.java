@@ -4,7 +4,7 @@ import org.amaap.troopsimulator.service.exception.InvalidTroopCountException;
 import org.amaap.troopsimulator.service.exception.InvalidTroopTypeException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TrainControllerTest {
     @Test
@@ -15,7 +15,7 @@ class TrainControllerTest {
         String trooperType = "Barbarian";
 
         // act
-        boolean  actual = trainController.train(trooperCount, trooperType);
+        boolean actual = trainController.train(trooperCount, trooperType);
 
         // assert
         assertTrue(actual);

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class TrainTroop {
+
     private static Queue<Barbarian> barbarianWaitListQueue = new LinkedList<>();
     private static Queue<Archer> archerWaitListQueue = new LinkedList<>();
 
@@ -26,14 +27,14 @@ public class TrainTroop {
 
     private static void trainBarbarian(int trooperCount) {
         for (int i = 0; i < trooperCount; i++) {
-            Barbarian barbarian = new Barbarian(); // Create a new instance for each trooper
+            Barbarian barbarian = new Barbarian();
             barbarianWaitListQueue.add(barbarian);
         }
     }
 
     private static void trainArcher(int trooperCount) {
         for (int i = 0; i < trooperCount; i++) {
-            Archer archer = new Archer(); // Create a new instance for each trooper
+            Archer archer = new Archer();
             archerWaitListQueue.add(archer);
         }
     }
@@ -46,8 +47,4 @@ public class TrainTroop {
         return archerWaitListQueue;
     }
 
-    public static void clearWaitListQueues() {
-        barbarianWaitListQueue.clear();
-        archerWaitListQueue.clear();
-    }
 }

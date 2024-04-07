@@ -3,6 +3,8 @@ package org.amaap.troopsimulator.domain;
 import org.amaap.troopsimulator.domain.model.Archer;
 import org.amaap.troopsimulator.domain.model.Barbarian;
 import org.amaap.troopsimulator.domain.service.TrainTroop;
+import org.amaap.troopsimulator.domain.util.BarrackUtil;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -11,27 +13,34 @@ import java.util.Queue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BarrackTest {
+    BarrackUtil barrackUtil = new BarrackUtil();
+    private ArmyCamp armyCamp = new ArmyCamp();
+
+    @AfterEach
+    void setUp() {
+        barrackUtil.clearTrainedListQueues();
+    }
+
     @Test
-    void shouldBeAbleToTrainBarbarianInGivenTimeWhenSentToBarrack() {
+    void shouldBeAbleToTrainBarbarianInGivenTimeWhenSentToBarrack() throws InterruptedException {
         // arrange
         TrainTroop trainTroop = new TrainTroop();
         int troopCount = 20;
         String troopType = "Barbarian";
         trainTroop.train(troopCount, troopType);
-        Queue<Barbarian> expected = new LinkedList<>(TrainTroop.getBarbarianWaitListQueue());
 
         // act
         Barrack barrack = new Barrack();
         barrack.trainTroops();
-        Queue<Barbarian> actual = barrack.getTrainedBarbarians();
+        barrack.transferTrainedTroopsToArmyCamp(armyCamp);
 
         // assert
-        assertEquals(expected, actual, "Trained ");
+        LinkedList<Barbarian> trainedBarbarians = armyCamp.getTrainedBarbarians();
+        assertEquals(troopCount, trainedBarbarians.size());
     }
 
-
     @Test
-    void shouldBeAbleToTrainArcherInGivenTimeWhenIsSentToBarrack() {
+    void shouldBeAbleToTrainArcherInGivenTimeWhenIsSentToBarrack() throws InterruptedException {
         // arrange
         TrainTroop trainTroop = new TrainTroop();
         int troopCount = 30;
@@ -42,16 +51,15 @@ class BarrackTest {
         // act
         Barrack barrack = new Barrack();
         barrack.trainTroops();
-        Queue<Archer> actual = barrack.getTrainedArchers();
+        barrack.transferTrainedTroopsToArmyCamp(armyCamp);
 
         // assert
+        LinkedList<Archer> actual = armyCamp.getTrainedArchers();
         assertEquals(expected, actual);
-
     }
 
     @Test
-    void shouldBeAbleToTrainBothArcherAndBarbarianInGivenTimeWhenSentToBarrack()
-    {
+    void shouldBeAbleToTrainBothArcherAndBarbarianInGivenTimeWhenSentToBarrack() throws InterruptedException {
         // arrange
         TrainTroop trainTroop = new TrainTroop();
         int troopCountForBarbarian = 5;
@@ -61,20 +69,20 @@ class BarrackTest {
         int troopCountForArcher = 4;
         String troopTypeForArcher = "Archer";
         trainTroop.train(troopCountForArcher, troopTypeForArcher);
-        Barrack barrack = new Barrack();
 
         // act
+        Barrack barrack = new Barrack();
         barrack.trainTroops();
+        barrack.transferTrainedTroopsToArmyCamp(armyCamp);
 
         // assert
-        LinkedList<Barbarian> trainedBarbarians = barrack.getTrainedBarbarians();
-        LinkedList<Archer> trainedArchers = barrack.getTrainedArchers();
+        LinkedList<Barbarian> trainedBarbarians = armyCamp.getTrainedBarbarians();
+        LinkedList<Archer> trainedArchers = armyCamp.getTrainedArchers();
 
         LinkedList<Object> trainedTroopers = new LinkedList<>();
         trainedTroopers.addAll(trainedBarbarians);
         trainedTroopers.addAll(trainedArchers);
 
-        assertEquals(9, trainedTroopers.size());
-
+        assertEquals(troopCountForBarbarian + troopCountForArcher, trainedTroopers.size());
     }
 }
