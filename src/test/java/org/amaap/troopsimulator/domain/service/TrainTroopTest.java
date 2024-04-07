@@ -9,7 +9,7 @@ class TrainTroopTest {
 
     @BeforeEach
     void setUp() {
-        // Clear the wait list queues before each test
+
         TrainTroop.clearWaitListQueues();
     }
 
@@ -24,7 +24,6 @@ class TrainTroopTest {
         boolean actual = trainTroop.train(troopCount, troopType);
 
         // assert
-        System.out.println(trainTroop.getBarbarianWaitListQueue());
         assertTrue(actual);
     }
 
@@ -40,7 +39,6 @@ class TrainTroopTest {
         boolean actual = trainTroop.train(troopCount, troopType);
 
         // assert
-        System.out.println(trainTroop.getArcherWaitListQueue());
         assertTrue(actual);
     }
 }
