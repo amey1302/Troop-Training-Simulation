@@ -1,14 +1,19 @@
 # OOMD Analysis : 
-## config - future preparedness
- - training time
- - training cost
 ## Domain
   ##  model
     ##  Troop 
-    	- Barbarian - Enum
-    	- Archer    - Enum
-  ##  Barracks  : queue of troops waiting, isTroopTrained
-  ##  ArmyCamp  : list of troop trained TroopType : Count
+     - TroopType : Enum
+    	- Barbarian - class
+    	- Archer    - class
+  ##  Barracks  :
+    - Behaviours 
+        -  public void trainTroops()
+        - private void trainTrooperAndWait(Barbarian barbarian)
+        - private void trainTrooperAndWait(Archer archer)
+        -  public void transferTrainedTroopsToArmyCamp(ArmyCamp armyCamp)
+  ##  ArmyCamp  
+     - Behaviour
+       - public void receiveTrainedTroops(LinkedList<Barbarian> barbarians, LinkedList<Archer> archers)
   ##  Service 
   		- TrainTheTroop : training time & cost
   		- ViewArmyCamp  : 
@@ -21,15 +26,10 @@
    		- validation -> service of domain(TrainTheTroop)
 
   ## view 
- 	-> ArmyCampService.view
-    	-> ArmyCampRepository.viewtroop
-     		-> read from db 
-     		/ it may call to domain service
-     	->  ArmyCampRepository.viewtroop
+ 	-> ViewService and calls ViewTroop from domain
+    	-> stores into faketroopDatabase. getTrainedTroops
+     	
 ---
 # repository :
-  - ArmyCampRepository : 
-     - totalNoTroopTrained
-     - barbarian
-     - archer
-     - costLeft
+  - FakeTroopDatabase : 
+      -public void storeCombinedTrainedTroops(LinkedList<Object> combinedTroops)
