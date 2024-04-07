@@ -25,16 +25,16 @@ public class TrainTroop {
     }
 
     private static void trainBarbarian(int trooperCount) {
-        Barbarian troop = new Barbarian();
         for (int i = 0; i < trooperCount; i++) {
-            barbarianWaitListQueue.add(troop);
+            Barbarian barbarian = new Barbarian(); // Create a new instance for each trooper
+            barbarianWaitListQueue.add(barbarian);
         }
     }
 
     private static void trainArcher(int trooperCount) {
-        Archer troop = new Archer();
         for (int i = 0; i < trooperCount; i++) {
-            archerWaitListQueue.add(troop);
+            Archer archer = new Archer(); // Create a new instance for each trooper
+            archerWaitListQueue.add(archer);
         }
     }
 
