@@ -8,4 +8,5 @@ public class TrainController {
     public boolean train(int trooperCount, String trooperType) throws InvalidTroopCountException, InvalidTroopTypeException {
         return TroopService.train(trooperCount, trooperType);
     }
+
 }

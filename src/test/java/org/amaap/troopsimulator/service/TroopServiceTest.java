@@ -9,10 +9,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class TroopServiceTest {
 
     @Test
-    void shouldBeAbleToTrainTroopWithValidInputs() throws InvalidTroopCountException, InvalidTroopTypeException {
+    void shouldBeAbleToTrainTroopWithValidInputOfBarbarian() throws InvalidTroopCountException, InvalidTroopTypeException {
         // arrange
         int trooperCount = 10;
         String trooperType = "Barbarian";
+
+
+        // act
+        boolean actual = TroopService.train(trooperCount, trooperType);
+
+        // assert
+        assertTrue(actual);
+    }
+
+    @Test
+    void shouldBeAbleToTrainTroopWithValidInputOfArcher() throws InvalidTroopCountException, InvalidTroopTypeException {
+        // arrange
+        int trooperCount = 10;
+        String trooperType = "Archer";
 
 
         // act
@@ -50,4 +64,7 @@ class TroopServiceTest {
         // arrange
 
     }
+
+
+
 }

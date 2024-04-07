@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TrainControllerTest {
     @Test
-    void shouldBeAbleToTakeInputs() throws InvalidTroopCountException, InvalidTroopTypeException {
+    void shouldBeAbleToTakeInputsToTrain() throws InvalidTroopCountException, InvalidTroopTypeException {
         // arrange
         TrainController trainController = new TrainController();
         int trooperCount = 10;
@@ -21,4 +21,8 @@ class TrainControllerTest {
         assertTrue(actual);
     }
 
+
 }
+
+
+
