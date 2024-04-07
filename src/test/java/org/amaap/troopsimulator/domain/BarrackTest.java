@@ -3,8 +3,6 @@ package org.amaap.troopsimulator.domain;
 import org.amaap.troopsimulator.domain.model.Archer;
 import org.amaap.troopsimulator.domain.model.Barbarian;
 import org.amaap.troopsimulator.domain.service.TrainTroop;
-import org.amaap.troopsimulator.domain.util.BarrackUtil;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -13,13 +11,8 @@ import java.util.Queue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BarrackTest {
-    BarrackUtil barrackUtil = new BarrackUtil();
     private ArmyCamp armyCamp = new ArmyCamp();
 
-    @AfterEach
-    void setUp() {
-        barrackUtil.clearTrainedListQueues();
-    }
 
     @Test
     void shouldBeAbleToTrainBarbarianInGivenTimeWhenSentToBarrack() throws InterruptedException {

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.amaap.troopsimulator.service.TroopServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-04-07T19:44:58" hostname="LAPTOP-205J7BQ6" time="0.011">
+  <properties/>
+  <testcase name="shouldThrowAnInvalidTroopCountException()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.007"/>
+  <testcase name="shouldThrowAnInvalidTroopTypeException()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.001"/>
+  <testcase name="shouldBeAbleToTrainTroopWithValidInputOfArcher()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.001"/>
+  <testcase name="shouldBeAbleToTrainTroopWithValidInputOfBarbarian()" classname="org.amaap.troopsimulator.service.TroopServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
